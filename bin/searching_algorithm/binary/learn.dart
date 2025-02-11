@@ -26,6 +26,7 @@ void main() {
   } else {
     print("element topilmadi..");
   }
+  //// natija : 5 ✅ tg:@eshpolatov_azizbek
 }
 
 int? binarySearchRecursive(List<int> nums, int target, int left, int right) {
