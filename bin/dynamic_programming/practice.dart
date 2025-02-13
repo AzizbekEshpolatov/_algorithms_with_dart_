@@ -27,3 +27,27 @@ class Solution1 {
     return maxSubarray;
   }
 }
+
+// leetcode 122
+class Solution2 {
+    int maxProfit(List<int> prices) {
+        int profit=0;
+        int minimalPrices = prices[0];
+        for(int i=1; i<prices.length; i++) {
+            minimalPrices =  minNumber(minimalPrices,prices[i]);
+            profit = maxNumber(profit,-minimalPrices+prices[i]);
+        }
+        return profit;
+    }
+
+    int minNumber(int a,int b) {
+        if (a>b) return b;
+        else if(a==b) return a;
+        else return a;
+    }
+    int maxNumber(int a,int b) {
+        if(a>b) return a;
+        else if(a==b) return a;
+        else return b;
+    }
+}
