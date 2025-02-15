@@ -34,7 +34,9 @@ void main() {
   // print("binary tree height:${heightBinaryTree(root)}");
   // print("binary tree nodes count:${countNode(root)}");
   // print("binary tree count leaf nodes:${countLeafNodes(root)}");
-  print("min value:${findMin(root)} | max value:${findMax(root)}");
+  // print("min value:${findMin(root)} | max value:${findMax(root)}");
+  print("3 soni bormi? : ${dfsSearch(root, 3)}");
+
 }
 
 /// ------------------------------------------------------------------------ ///
@@ -49,6 +51,24 @@ int findMax(TreeNode? node) {
 int findMin(TreeNode? node) {
   if (node == null) return 2147483648;
   return min(node.value, min(findMin(node.left), findMin(node.right)));
+}
+
+/// ------------------------------------------------------------------------ ///
+/// Depth First Search example
+/*
+    1
+   / \
+  2   3
+ / \   \
+4   5   6
+// shu binary tree ichida malum bir qiymat bor yoqligini tekshiramiz.
+ */
+bool dfsSearch(TreeNode? node, int target) {
+  if (node == null) return false;
+  if (node.value == target) return true;
+  bool leftDfs = dfsSearch(node.left, target);
+  bool rightDfs = dfsSearch(node.right, target);
+  return leftDfs || rightDfs;
 }
 
 /// ------------------------------------------------------------------------ ///
