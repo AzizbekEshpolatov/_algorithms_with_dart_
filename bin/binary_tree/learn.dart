@@ -1,3 +1,5 @@
+import 'dart:math';
+
 /// 1-misol
 /// binary tree tuzish
 /// Traversal qanday ishlashini tushunish
@@ -29,11 +31,24 @@ void inorderTraversal(TreeNode? node) {
 void main() {
   TreeNode root = TreeNode(
     1,
-    left: TreeNode(2, left: TreeNode(4), right: TreeNode(5)),
+    left: TreeNode(
+      2,
+      left: TreeNode(4),
+      right: TreeNode(5),
+    ),
     right: TreeNode(3, right: TreeNode(6)),
   );
-  print("Inorder Traversal:");
-  inorderTraversal(root);
+  // print("Inorder Traversal:");
+  // inorderTraversal(root);
+  print("binary tree height:${heightBinaryTree(root)}");
 }
 
+/// Binary Tree balandligini (Height) topish yani  ildiz (root) tugundan pastga
+/// qarab eng uzoq barggacha bo‘lgan yo‘l uzunligi.
 
+int heightBinaryTree(TreeNode? node) {
+  if (node == null) return 0;
+  int heightLeft = heightBinaryTree(node.left);
+  int heightRight = heightBinaryTree(node.right);
+  return 1 + max(heightRight, heightLeft);
+}
