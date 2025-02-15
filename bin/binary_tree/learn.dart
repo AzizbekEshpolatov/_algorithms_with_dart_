@@ -31,9 +31,24 @@ void main() {
   );
   // print("Inorder Traversal:");
   // inorderTraversal(root);
-  print("binary tree height:${heightBinaryTree(root)}");
-  print("binary tree nodes count:${countNode(root)}");
-  print("binary tree count leaf nodes:${countLeafNodes(root)}");
+  // print("binary tree height:${heightBinaryTree(root)}");
+  // print("binary tree nodes count:${countNode(root)}");
+  // print("binary tree count leaf nodes:${countLeafNodes(root)}");
+  print("min value:${findMin(root)} | max value:${findMax(root)}");
+}
+
+/// ------------------------------------------------------------------------ ///
+/// binary tree max and min value example
+int findMax(TreeNode? node) {
+  if (node == null) return -2147483648;
+  int maxLeft = findMax(node.left);
+  int maxRight = findMax(node.right);
+  return max(node.value, max(maxRight, maxLeft));
+}
+
+int findMin(TreeNode? node) {
+  if (node == null) return 2147483648;
+  return min(node.value, min(findMin(node.left), findMin(node.right)));
 }
 
 /// ------------------------------------------------------------------------ ///

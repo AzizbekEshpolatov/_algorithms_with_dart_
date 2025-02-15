@@ -2,7 +2,7 @@ import 'dart:math';
 
 class Solution {
   bool canJump(List<int> nums) {
-    int current = 0, maxJumping = 0, index = 0, count = 0;
+    int current = 0, maxJumping = 0, index = 0;
     while (index < nums.length) {
       maxJumping = max(maxJumping, index + nums[index]);
       if (current >= nums.length - 1) return true;
