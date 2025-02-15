@@ -33,7 +33,21 @@ void main() {
   // inorderTraversal(root);
   print("binary tree height:${heightBinaryTree(root)}");
   print("binary tree nodes count:${countNode(root)}");
+  print("binary tree count leaf nodes:${countLeafNodes(root)}");
 }
+
+/// ------------------------------------------------------------------------ ///
+
+/// Count Leaf Nodes
+int countLeafNodes(TreeNode? node) {
+  if (node == null) return 0;
+  if (node.left == null && node.right == null) return 1;
+  int leftLeaf = countLeafNodes(node.left);
+  int rightLeaf = countLeafNodes(node.right);
+  return leftLeaf + rightLeaf;
+}
+
+/// ------------------------------------------------------------------------ ///
 
 /// Binary Tree dagi tugunlar sonini hisoblash
 /// binary tree-dagi barcha node-lar sonini topish methhodi.
