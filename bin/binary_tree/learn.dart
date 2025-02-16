@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:math';
 
 /// 1-misol
@@ -36,7 +37,22 @@ void main() {
   // print("binary tree count leaf nodes:${countLeafNodes(root)}");
   // print("min value:${findMin(root)} | max value:${findMax(root)}");
   print("3 soni bormi? : ${dfsSearch(root, 3)}");
+}
 
+/// ------------------------------------------------------------------------ ///
+/// Breadth First Search -> kenglik boyicha tekshirish.
+/// binary tree-ning node-larini qavatma-qavat yurib chiqamiz.
+bool bfsSearch(TreeNode? root, int target) {
+  if (root == null) return false;
+  Queue<TreeNode> queue = Queue();
+  queue.add(root);
+  while (queue.isNotEmpty) {
+    TreeNode current = queue.removeFirst();
+    if (current.value == target) return true;
+    if (current.left != null) queue.add(current.left!);
+    if (current.right != null) queue.add(current.right!);
+  }
+  return false;
 }
 
 /// ------------------------------------------------------------------------ ///
