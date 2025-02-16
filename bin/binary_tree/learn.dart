@@ -26,6 +26,11 @@ void main() {
     left: TreeNode(2, left: TreeNode(4), right: TreeNode(5)),
     right: TreeNode(3, right: TreeNode(6)),
   );
+  TreeNode root1 = TreeNode(
+    1,
+    left: TreeNode(2, left: TreeNode(4), right: TreeNode(5)),
+    right: TreeNode(3, right: TreeNode(6)),
+  );
   // print("Inorder Traversal:");
   // inorderTraversal(root);
   // print("binary tree height:${heightBinaryTree(root)}");
@@ -33,13 +38,12 @@ void main() {
   // print("binary tree count leaf nodes:${countLeafNodes(root)}");
   // print("min value:${findMin(root)} | max value:${findMax(root)}");
   // print("3 soni bormi? : ${dfsSearch(root, 3)}");
-  print("Dastlabki tree (Inorder):");
-  inorderTraversal(root);
-
-  invertTree(root);
-
-  print("Teskari qilingan tree (Inorder):");
-  inorderTraversal(root);
+  // print("Dastlabki tree (Inorder):");
+  // inorderTraversal(root);
+  // invertTree(root);
+  // print("Teskari qilingan tree (Inorder):");
+  // inorderTraversal(root);
+  print(areIdentical(root, root1));
 }
 
 /// ------------------------------------------------------------------------ ///
@@ -62,6 +66,22 @@ void showInvertResult(TreeNode? node) {
 }
 
 /// ------------------------------------------------------------------------ ///
+/// Check if Two Trees are Identical
+/// 2ta tree tengligini tekshiramiz
+/// shartlari:
+/// node values va joylashuvi bir xil bolishi kerak
+/// rekursiya orqali har bir node yurib chiqib ularni taqqoslash kerak
+bool areIdentical(TreeNode? node1, TreeNode? node2) {
+  if (node1 == null && node2 == null) return true;
+  if (node1 == null || node2 == null) return false;
+  if (node1.value != node2.value) return false;
+  bool nodeOneCheck = areIdentical(node1.left, node2.left);
+  bool nodeTwoCheck = areIdentical(node2.right, node1.right);
+  return nodeTwoCheck && nodeOneCheck;
+}
+
+/// ------------------------------------------------------------------------ ///
+
 /// Breadth First Search -> kenglik boyicha tekshirish.
 /// binary tree-ning node-larini qavatma-qavat yurib chiqamiz.
 bool bfsSearch(TreeNode? root, int target) {
