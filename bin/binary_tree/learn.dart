@@ -23,11 +23,7 @@ class TreeNode {
 void main() {
   TreeNode root = TreeNode(
     1,
-    left: TreeNode(
-      2,
-      left: TreeNode(4),
-      right: TreeNode(5),
-    ),
+    left: TreeNode(2, left: TreeNode(4), right: TreeNode(5)),
     right: TreeNode(3, right: TreeNode(6)),
   );
   // print("Inorder Traversal:");
@@ -36,7 +32,33 @@ void main() {
   // print("binary tree nodes count:${countNode(root)}");
   // print("binary tree count leaf nodes:${countLeafNodes(root)}");
   // print("min value:${findMin(root)} | max value:${findMax(root)}");
-  print("3 soni bormi? : ${dfsSearch(root, 3)}");
+  // print("3 soni bormi? : ${dfsSearch(root, 3)}");
+  print("Dastlabki tree (Inorder):");
+  inorderTraversal(root);
+
+  invertTree(root);
+
+  print("Teskari qilingan tree (Inorder):");
+  inorderTraversal(root);
+}
+
+/// ------------------------------------------------------------------------ ///
+/// Invert Binary Tree example
+/// binary tree reverse qilish
+void invertTree(TreeNode? node) {
+  if (node == null) return;
+  var temp = node.left;
+  node.left = node.right;
+  node.right = temp;
+  invertTree(node.left);
+  invertTree(node.right);
+}
+
+void showInvertResult(TreeNode? node) {
+  if (node == null) return;
+  invertTree(node.left);
+  print(node.value);
+  invertTree(node.right);
 }
 
 /// ------------------------------------------------------------------------ ///
