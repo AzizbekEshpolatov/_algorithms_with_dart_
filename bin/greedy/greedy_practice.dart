@@ -13,7 +13,7 @@ class Solution {
 
     for (int i = 0; i < s.length; i++) {
       String letter = s[i];
-      if (helperItem.contains(helperItem)) {
+      if (helperItem.contains(letter)) {
         countingMap[letter] = countingMap[letter]! - 1;
         continue;
       } else {
