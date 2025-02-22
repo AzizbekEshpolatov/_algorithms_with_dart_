@@ -58,8 +58,3 @@ git clone https://github.com/yourusername/mobile-algorithms.git
 
 🎭 Contribution Guidelines
 We welcome contributions! Feel free to open issues, submit PRs, or add improvements. 🚀
-
-
-💡 Happy Coding! 🎯
-
->>>>>>> e0cf924d0efb5953c1fafb29857076814eb095e2
