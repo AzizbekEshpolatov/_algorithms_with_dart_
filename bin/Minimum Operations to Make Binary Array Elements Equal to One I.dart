@@ -1,8 +1,30 @@
-// You are given a binary array nums.
-//
-// You can do the following operation on the array any number of times (possibly zero):
-//
-// Choose any 3 consecutive elements from the array and flip all of them.
-// Flipping an element means changing its value from 0 to 1, and from 1 to 0.
-//
-// Return the minimum number of operations required to make all elements in nums equal to 1. If it is impossible, return -1.
+/*
+3191 - masala leetcode
+
+
+masaladagi shart, massiv beriladi [1,0,1,1,0] -> binary massiv
+bizning vazifamiz massivni hamma elementlarini 1ga aylantirish!
+eng kam yolni topish kerak
+ */
+class Solution {
+  int minOperations(List<int> nums) {
+    int count = 0;
+    for (int i = 0; i < nums.length - 2; i++) {
+      if (nums[i] == 1) continue;
+      for (int j = i; j < i + 3; j++) {
+        if (nums[j] == 0) {
+          nums[j] = 1;
+        } else {
+          nums[j] = 0;
+        }
+      }
+      count++;
+    }
+    return nums.contains(0) ? -1 : count;
+  }
+}
+
+void main() {
+  Solution solution = Solution();
+  print(solution.minOperations([0, 1, 1, 1, 0, 0]));
+}
