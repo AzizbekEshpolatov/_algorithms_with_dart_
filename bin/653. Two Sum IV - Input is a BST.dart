@@ -32,8 +32,16 @@ TreeNode? buildTree(List<dynamic> values) {
 
 class Solution {
   bool findTarget(TreeNode? root, int k) {
-    // solved soon.
-    return false;
+    Set<int> seen = {};
+    return dfs(root, k, seen);
+  }
+
+  bool dfs(TreeNode? node, int k, Set<int> seen) {
+    if (node == null) return false;
+    var completed = k - node.val;
+    if (seen.contains(completed)) return true;
+    seen.add(node.val);
+    return dfs(node.left, k, seen) || dfs(node.right, k, seen);
   }
 }
 
