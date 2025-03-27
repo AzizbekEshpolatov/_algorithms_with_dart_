@@ -12,11 +12,9 @@ class Solution {
         wordCount[word] = (wordCount[word] ?? 0) + 1;
       }
     }
-
     for (String ban in banned) {
       wordCount.remove(ban);
     }
-
     int maxCount = 0;
     String res = "";
 
